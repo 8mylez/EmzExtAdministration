@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de" class="emz-admin-root">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="same-origin">
+    <title>8mylez · Administration</title>
+    <link rel="icon" href="{{ asset('administration/static/img/favicon/favicon.svg', '@Administration') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/emzextadministration/vendor/ext/classic/theme-triton/resources/theme-triton-all.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/emzextadministration/css/administration.css') }}">
+    <script defer nonce="{{ cspNonce }}" src="{{ asset('bundles/emzextadministration/vendor/ext/ext-all.js') }}"></script>
+    <script defer nonce="{{ cspNonce }}" src="{{ asset('bundles/emzextadministration/vendor/ext/classic/theme-triton/theme-triton.js') }}"></script>
+    <script defer nonce="{{ cspNonce }}" src="{{ asset('bundles/emzextadministration/vendor/ext/classic/locale/locale-de.js') }}"></script>
+    <script type="module" nonce="{{ cspNonce }}" src="{{ asset('bundles/emzextadministration/js/app.js') }}"></script>
+</head>
+<body class="emz-admin">
+    <div id="emz-admin-config"
+         data-api-base="{{ app.request.basePath }}/api"
+         data-currency-id="{{ systemCurrencyId }}"
+         data-currency-code="{{ systemCurrencyISOCode }}"
+         data-language-id="{{ systemLanguageId }}"
+         data-product-export-type-id="{{ constant('Shopware\\Core\\Defaults::SALES_CHANNEL_TYPE_PRODUCT_COMPARISON') }}"
+         data-headless-type-id="{{ constant('Shopware\\Core\\Defaults::SALES_CHANNEL_TYPE_API') }}"
+         data-storefront-type-id="{{ constant('Shopware\\Core\\Defaults::SALES_CHANNEL_TYPE_STOREFRONT') }}"
+         data-default-privileges="{{ constant('Shopware\\Core\\Framework\\Api\\Context\\AdminApiSource::DEFAULT_USER_PRIVILEGES')|json_encode|e('html_attr') }}"
+         data-logo-url="{{ asset('administration/static/img/shopware_logo_blue.svg', '@Administration') }}"
+         data-native-url="{{ path('administration.index', {native: '1'}) }}"></div>
+    <div id="emz-admin-loading" class="emz-admin__loading" role="status">Administration wird geladen …</div>
+    <noscript>Bitte JavaScript aktivieren, um die Administration zu verwenden.</noscript>
+</body>
+</html>

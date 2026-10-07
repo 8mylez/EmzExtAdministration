@@ -1,0 +1,470 @@
+/* Shopware 5 appearance adapted to Ext JS 7. Asset provenance: ../images/shopware5/NOTICE.md. */
+.emz-admin-root {
+    /* Ext manages scrolling inside panels; focusing a window tool must not scroll the desktop. */
+    overflow: clip;
+}
+
+.emz-admin__shell > .x-panel-bodyWrap > .x-panel-body {
+    /* The border layout owns window placement; focus must not scroll the desktop container. */
+    overflow: clip;
+}
+
+.emz-admin {
+    --emz-text: #475c6a;
+    --emz-border: #a4b5c0;
+    --emz-surface: #ebedef;
+    --emz-blue: #0e5c99;
+    margin: 0;
+    color: var(--emz-text);
+    background: #c6eaf6;
+    font-family: Arial, Verdana, sans-serif;
+}
+
+.emz-admin .x-component,
+.emz-admin .x-panel-body,
+.emz-admin .x-window-body,
+.emz-admin .x-btn-inner,
+.emz-admin .x-form-item-label,
+.emz-admin .x-form-text,
+.emz-admin .x-form-cb-label,
+.emz-admin .x-column-header,
+.emz-admin .x-grid-cell,
+.emz-admin .x-toolbar-text,
+.emz-admin .x-title-text,
+.emz-admin .x-boundlist-item {
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 0.75rem;
+}
+
+.emz-admin .x-panel-body,
+.emz-admin .x-window-body,
+.emz-admin .x-form-item-label,
+.emz-admin .x-form-field,
+.emz-admin .x-grid-cell,
+.emz-admin .x-toolbar-text {
+    color: var(--emz-text);
+}
+
+.emz-admin__loading {
+    padding: 3rem;
+    font: 0.875rem Arial, sans-serif;
+}
+
+/* The fixed development toolbar would cover viewport and dialog actions. */
+.emz-admin .sf-toolbar {
+    display: none;
+}
+
+.emz-admin__desktop,
+.emz-admin__login-screen {
+    background: #c6eaf6 url('../images/shopware5/background-compressed-login.jpg') center / cover no-repeat;
+}
+
+.emz-admin__login.x-panel,
+.emz-admin__login .x-panel-body {
+    border: 0;
+    background-color: transparent;
+}
+
+.emz-admin__login.x-panel::before {
+    content: '';
+    position: absolute;
+    inset: 3.3125rem 0 0;
+    border: 0.0625rem solid #b5d8e7;
+    border-radius: 0.1875rem;
+    background: #ffffffa6;
+    box-shadow: 0 0.125rem 0.125rem #475c6a0d;
+}
+
+.emz-admin__login-brand {
+    position: absolute;
+    top: -5.875rem;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 14.5rem;
+    height: 4.75rem;
+    border: 0.0625rem solid #b5d8e7;
+    border-radius: 0.3125rem;
+    color: #0870ff;
+    background: #f5fbfe;
+    font-size: 2.5rem;
+    transform: translateX(-50%);
+}
+
+.emz-admin__login-brand img {
+    width: 9.3125rem;
+    height: 2rem;
+}
+
+.emz-admin__desktop-brand {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    color: #fff;
+    font-size: 6rem;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.emz-admin__desktop-brand img {
+    width: 20rem;
+    max-width: 65%;
+    height: auto;
+    filter: brightness(0) invert(1);
+}
+
+.emz-admin__login-title {
+    margin: 0 0 1.25rem;
+    color: var(--emz-text);
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.3125rem;
+    text-align: center;
+    text-shadow: 0 0.0625rem #fff;
+}
+
+.emz-admin__login-credit {
+    color: var(--emz-text);
+    text-align: center;
+    text-shadow: 0 0.0625rem #fff;
+}
+
+.emz-admin__error {
+    color: #9a1827;
+    line-height: 1.125rem;
+    white-space: normal;
+}
+
+.emz-admin .x-window-default {
+    padding: 0;
+    border: 0.0625rem solid #8b9fac;
+    border-radius: 0.3125rem;
+    background: #f7f7f7;
+    box-shadow: 0 0.25rem 1rem #243f5940;
+}
+
+.emz-admin .x-window-header-default {
+    padding: 0.4375rem 0.625rem;
+    border-bottom: 0.0625rem solid var(--emz-border);
+    border-radius: 0.25rem 0.25rem 0 0;
+    background: #e5e9ed url('../images/shopware5/window_header_bg.png') repeat-x;
+    background-size: auto 100%;
+    box-shadow: inset 0 0.0625rem #fff;
+}
+
+.emz-admin .x-title-text {
+    color: var(--emz-text);
+    font-weight: bold;
+    line-height: 1.125rem;
+    text-shadow: 0 0.0625rem #fff;
+}
+
+.emz-admin .x-tool-tool-el {
+    color: #526979;
+    font-size: 0.875rem;
+}
+
+.emz-admin .x-tool-over .x-tool-tool-el {
+    color: var(--emz-blue);
+}
+
+.emz-admin .x-window-body-default {
+    border-color: #eff2f5;
+    background: #f9fafa;
+}
+
+.emz-admin .x-panel-header-default {
+    padding: 0.5rem 0.625rem;
+    border-color: var(--emz-border);
+    background: linear-gradient(#f7f7f7, #e5e6e8);
+    box-shadow: inset 0 0.0625rem #fff;
+}
+
+.emz-admin .x-toolbar-default,
+.emz-admin .x-toolbar-footer {
+    padding: 0.3125rem;
+    border-color: var(--emz-border);
+    background: var(--emz-surface);
+}
+
+.emz-admin .x-btn-default-small,
+.emz-admin .x-btn-default-medium,
+.emz-admin .x-btn-default-toolbar-small {
+    padding: 0.3125rem 0.625rem;
+    border: 0.0625rem solid var(--emz-border);
+    border-radius: 0.1875rem;
+    background: linear-gradient(#fff, #e4e9ed);
+    box-shadow: inset 0 0.0625rem #fff, 0 0.0625rem 0.0625rem #475c6a1a;
+}
+
+.emz-admin .x-btn-inner-default-small,
+.emz-admin .x-btn-inner-default-medium,
+.emz-admin .x-btn-inner-default-toolbar-small {
+    color: var(--emz-text);
+    font-weight: normal;
+    line-height: 1.125rem;
+    text-shadow: 0 0.0625rem #fff;
+}
+
+.emz-admin .x-btn-over {
+    border-color: #719bb8;
+    background: linear-gradient(#fff, #dcecf6);
+}
+
+.emz-admin .x-btn-pressed {
+    background: #d7e5ef;
+    box-shadow: inset 0 0.0625rem 0.1875rem #475c6a33;
+}
+
+.emz-admin .emz-admin__primary {
+    border-color: #155584;
+    background: linear-gradient(#2f79b1, #0e5c99);
+    box-shadow: inset 0 0.0625rem #71a9cc;
+}
+
+.emz-admin .emz-admin__primary.x-btn-over {
+    background: linear-gradient(#276eaa, #094d85);
+}
+
+.emz-admin .emz-admin__primary .x-btn-inner,
+.emz-admin .emz-admin__primary .x-btn-icon-el {
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0.0625rem #084975;
+}
+
+.emz-admin .x-btn-focus,
+.emz-admin .x-tool-focus {
+    outline: 0.125rem solid #1680bd;
+    outline-offset: 0.125rem;
+}
+
+.emz-admin .x-btn-disabled {
+    opacity: 0.5;
+}
+
+.emz-admin .x-btn-icon-el {
+    color: #526979;
+    font-size: 0.875rem;
+}
+
+.emz-admin .x-form-trigger-wrap-default {
+    border: 0.0625rem solid var(--emz-border);
+    border-radius: 0.1875rem;
+    box-shadow: inset 0 0.0625rem 0.1875rem #00336821;
+}
+
+.emz-admin .x-form-trigger-wrap-focus {
+    border-color: #2f79b1;
+    box-shadow: 0 0 0 0.0625rem #2f79b1;
+}
+
+.emz-admin .x-form-text-default {
+    min-height: 1.875rem;
+    padding: 0.3125rem 0.5rem;
+    line-height: 1.125rem;
+    background: #fff;
+}
+
+.emz-admin .x-form-item-label-inner {
+    padding-bottom: 0.25rem;
+    line-height: 1.125rem;
+}
+
+.emz-admin .x-form-item-label-top {
+    margin-bottom: 0.1875rem;
+}
+
+.emz-admin .x-form-trigger-default {
+    border-left: 0.0625rem solid #c1cdd5;
+    color: #526979;
+    background: linear-gradient(#f7f7f7, #e1e7ec);
+}
+
+.emz-admin .x-form-trigger-default::before {
+    line-height: 1.875rem;
+}
+
+.emz-admin .x-column-header {
+    border-color: #cdd6dd;
+    color: var(--emz-text);
+    background: linear-gradient(#f7f7f7, #e5e6e8);
+    font-weight: normal;
+    text-shadow: 0 0.0625rem #fff;
+}
+
+.emz-admin .x-column-header-inner {
+    padding: 0.375rem 0.625rem;
+}
+
+.emz-admin .x-grid-header-ct {
+    border-color: var(--emz-border);
+    background: var(--emz-surface);
+}
+
+.emz-admin .x-grid-cell-inner {
+    padding: 0.3125rem 0.625rem;
+    line-height: 1.125rem;
+}
+
+.emz-admin .x-grid-item {
+    border-color: #dce3e8;
+}
+
+.emz-admin .x-grid-item-alt .x-grid-cell {
+    background: #f3f5f7;
+}
+
+.emz-admin .x-grid-item-over .x-grid-cell {
+    background: #eef5fa;
+}
+
+.emz-admin .x-grid-item-selected .x-grid-cell {
+    border-color: #d1e0ec;
+    background: #e6f2f8;
+}
+
+.emz-admin__header.x-toolbar {
+    padding: 0 0.75rem;
+    border-bottom: 0.0625rem solid #164f7b;
+    background: #5084aa url('../images/shopware5/nav_taskbar_top_bg.png') repeat-x;
+    background-size: auto 100%;
+    background-blend-mode: multiply;
+}
+
+.emz-admin__taskbar.x-toolbar {
+    padding: 0.25rem 0.75rem;
+    border-top: 0.0625rem solid #6995b6;
+    background: #1a4e78 url('../images/shopware5/nav_taskbar_cap_bg.png') repeat-x;
+    background-size: auto 100%;
+}
+
+.emz-admin__header .x-btn,
+.emz-admin__taskbar .x-btn {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+}
+
+.emz-admin__header .x-btn-inner,
+.emz-admin__header .x-toolbar-text {
+    color: #fff;
+    text-shadow: 0 0.0625rem #163e5c;
+}
+
+.emz-admin__taskbar .x-btn-inner,
+.emz-admin__taskbar .x-toolbar-text {
+    color: var(--emz-text);
+    text-shadow: 0 0.0625rem #fff;
+}
+
+.emz-admin__header .x-btn-inner {
+    font-size: 0.875rem;
+}
+
+.emz-admin__header .x-btn-over {
+    border-color: #ffffff40;
+    background: #ffffff1f;
+    box-shadow: inset 0 0.0625rem #ffffff1f;
+}
+
+.emz-admin__taskbar .x-btn-over,
+.emz-admin__taskbar .x-btn-pressed {
+    border-color: #8aa6b9;
+    background: #d9e7f0;
+    box-shadow: inset 0 0.0625rem #fff;
+}
+
+.emz-admin__header .x-btn-focus {
+    outline-color: #fff;
+}
+
+.emz-admin__brand.x-toolbar-text {
+    padding-right: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+.emz-admin__taskbar-label {
+    padding-right: 0.625rem;
+}
+
+.emz-admin__user {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.emz-admin__icon-dashboard {
+    background: url('../images/shopware5/icon_taskbar_top_inhalte.png') center no-repeat;
+}
+
+.emz-admin__icon-products {
+    background: url('../images/shopware5/icon_taskbar_top_artikel.png') center no-repeat;
+}
+
+.emz-admin__icon-logout {
+    background: url('../images/shopware5/icon_taskbar_cap_logout.png') center no-repeat;
+}
+
+.emz-admin__heading {
+    margin: 0 0 0.375rem;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.5rem;
+}
+
+.emz-admin__metrics {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.emz-admin__metric {
+    padding: 0.875rem 1rem;
+    border: 0.0625rem solid #c1cdd5;
+    border-radius: 0.1875rem;
+    background: linear-gradient(#fff, #f3f5f7);
+    box-shadow: inset 0 0.0625rem #fff;
+}
+
+.emz-admin__metric strong {
+    display: block;
+    color: var(--emz-blue);
+    font-size: 1.75rem;
+    font-weight: normal;
+    line-height: 2.25rem;
+}
+
+.emz-admin__media-preview {
+    max-width: 100%;
+    max-height: 28rem;
+    object-fit: contain;
+}
+
+.emz-admin .x-fieldset-header-text,
+.emz-admin .x-menu-item-text {
+    color: var(--emz-text);
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 0.75rem;
+}
+
+.emz-admin__cms-preview { border: 0; width: 100%; height: 100%; background: #eef2f5; }
+.emz-admin__cms-tablet .emz-admin__cms-preview { max-width: 48rem; }
+.emz-admin__cms-mobile .emz-admin__cms-preview { max-width: 24rem; }
+
+.emz-admin__toast {
+    pointer-events: none;
+}
+
+@media (min-width: 48rem) {
+    .emz-admin__metrics {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

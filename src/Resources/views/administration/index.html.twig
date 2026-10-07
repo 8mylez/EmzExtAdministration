@@ -1,0 +1,3 @@
+{% extends app.request.query.get('native') == '1'
+    ? '@Administration/administration/index.html.twig'
+    : '@EmzExtAdministration/administration/ext-index.html.twig' %}

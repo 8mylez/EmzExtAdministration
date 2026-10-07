@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services">
+    <services>
+        <service id="Emz\ExtAdminRefundFixture\Handler">
+            <argument type="service" id="Shopware\Core\Checkout\Order\Aggregate\OrderTransactionCaptureRefund\OrderTransactionCaptureRefundStateHandler"/>
+            <tag name="shopware.payment.method"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,17 @@
+body { margin: 0; padding: 1rem; color: #243746; background: #eef2f5; font: 1rem/1.5 Arial, sans-serif; }
+.emz-cms__section { padding: 1rem; margin-bottom: 1rem; background: #fff; border: 0.0625rem solid #ced7df; }
+.emz-cms__label { display: block; margin: 0 0 0.5rem; font-size: 0.75rem; font-weight: normal; color: #4b6578; }
+.emz-cms__block { padding: 0.75rem; margin-bottom: 1rem; border: 0.0625rem dashed #bccad5; }
+.emz-cms__element { min-width: 0; overflow-wrap: anywhere; }
+.emz-cms__element img { max-width: 100%; max-height: 20rem; object-fit: contain; }
+.emz-cms__columns, .emz-cms__gallery, .emz-cms__sidebar-layout { display: grid; gap: 1rem; }
+.emz-cms__placeholder { padding: 2rem 1rem; color: #4b6578; background: #f4f7f9; text-align: center; }
+table { max-width: 100%; border-collapse: collapse; }
+td, th { border: 0.0625rem solid #ced7df; padding: 0.5rem; }
+pre { white-space: pre-wrap; }
+@media (min-width: 40rem) {
+    .emz-cms__columns-2, .emz-cms__gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .emz-cms__columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .emz-cms__columns-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .emz-cms__sidebar-layout { grid-template-columns: minmax(10rem, 1fr) minmax(0, 3fr); }
+}

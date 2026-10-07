@@ -1,0 +1,10 @@
+/src/Resources/public/vendor/
+/vendor/
+node_modules/
+.env
+.env.*
+auth.json
+test-results/
+playwright-report/
+__pycache__/
+*.pyc

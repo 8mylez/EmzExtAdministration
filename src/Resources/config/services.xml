@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="Emz\ExtAdministration\Extension\TagInstructionExtension">
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+            <tag name="shopware.entity.extension"/>
+        </service>
+        <service id="Emz\ExtAdministration\Controller\QueueController" public="true">
+            <argument type="service" id="Shopware\Core\Framework\MessageQueue\Api\ConsumeMessagesController"/>
+            <tag name="controller.service_arguments"/>
+        </service>
+    </services>
+</container>

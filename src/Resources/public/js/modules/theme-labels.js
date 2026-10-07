@@ -1,0 +1,28 @@
+// German field labels from the installed Shopware Storefront theme.
+export const themeLabels = {
+    "themeColors": "Theme-Farben",
+    "sw-color-brand-primary": "Primärfarbe",
+    "sw-color-brand-secondary": "Sekundärfarbe",
+    "sw-border-color": "Rahmen",
+    "sw-background-color": "Hintergrund",
+    "statusColors": "Status-Benachrichtigungen",
+    "sw-color-success": "Erfolg",
+    "sw-color-danger": "Fehler",
+    "sw-color-warning": "Hinweis",
+    "sw-color-info": "Information",
+    "typography": "Typografie",
+    "sw-font-family-base": "Fließtext-Schriftart",
+    "sw-text-color": "Fließtextfarbe",
+    "sw-font-family-headline": "Überschrift-Schriftart",
+    "sw-headline-color": "Überschriftfarbe",
+    "eCommerce": "E-Commerce",
+    "sw-color-price": "Preis",
+    "sw-color-buy-button": "Kauf-Button",
+    "sw-color-buy-button-text": "Kauf-Button-Farbe",
+    "media": "Medien",
+    "sw-logo-desktop": "Desktop",
+    "sw-logo-tablet": "Tablet",
+    "sw-logo-mobile": "Mobile",
+    "sw-logo-share": "App- & Share-Icon",
+    "sw-logo-favicon": "Favicon"
+};

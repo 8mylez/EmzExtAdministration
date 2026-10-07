@@ -1,0 +1,23 @@
+{
+    "name": "emz/ext-administration",
+    "description": "Ext-JS-Administration für Shopware 6 mit Katalogen, Bestellungen, Kunden, CMS, Marketing und Systemeinstellungen",
+    "type": "shopware-platform-plugin",
+    "license": "GPL-3.0-only",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Emz\\ExtAdministration\\": "src/"
+        }
+    },
+    "require": {
+        "shopware/core": "~6.7.0",
+        "shopware/administration": "~6.7.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "Emz\\ExtAdministration\\EmzExtAdministration",
+        "label": {
+            "de-DE": "Ext JS Administration",
+            "en-GB": "Ext JS Administration"
+        }
+    }
+}
