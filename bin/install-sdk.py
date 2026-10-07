@@ -15,8 +15,11 @@ DESTINATION = Path(__file__).resolve().parents[1] / 'src/Resources/public/vendor
 
 
 def install(archive):
+    digest_hash = hashlib.sha256()
     with archive.open('rb') as source:
-        digest = hashlib.file_digest(source, 'sha256').hexdigest()
+        for chunk in iter(lambda: source.read(1024 * 1024), b''):
+            digest_hash.update(chunk)
+    digest = digest_hash.hexdigest()
     if digest != SHA256:
         raise ValueError('SDK-Prüfsumme stimmt nicht mit Ext JS 7.0.0 GPL überein.')
     count = 0
