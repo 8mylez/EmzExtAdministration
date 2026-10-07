@@ -7,6 +7,12 @@ Eigenständige Ext-JS-Administration für Shopware 6.7.15.0 unter `/admin`.
 Die bisherige Administration ist über `/admin?native=1` erreichbar, auch bei einem
 konfigurierten abweichenden Admin-Pfad. Das Plugin verändert keine Core-Dateien.
 
+## Demo in Aktion
+
+Kurze Bildschirmaufnahme aus dem Demo-Shop als animiertes GIF.
+
+![Animierte Demo der Ext-JS-Administration für Shopware 6](docs/screenshots/administration-demo.gif)
+
 ## Screenshots
 
 ### Fensteroberfläche
