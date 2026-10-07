@@ -7,6 +7,44 @@ Eigenständige Ext-JS-Administration für Shopware 6.7.15.0 unter `/admin`.
 Die bisherige Administration ist über `/admin?native=1` erreichbar, auch bei einem
 konfigurierten abweichenden Admin-Pfad. Das Plugin verändert keine Core-Dateien.
 
+## Screenshots
+
+### Fensteroberfläche
+
+Dashboard, Produkte und Steuersätze als frei angeordnete Fenster im Demo-Shop.
+
+![Dashboard, Produktliste und Steuersätze in der Ext-JS-Administration](docs/screenshots/dashboard-produkte-steuersaetze.png)
+
+### Anmeldung
+
+Anmeldeseite mit Shopware-6-Logo und Hinweis auf den Demo-Charakter.
+
+![Anmeldung mit Benutzername, Passwort und Demo-Hinweis](docs/screenshots/anmeldung.png)
+
+### Desktop
+
+Die Oberfläche mit Hauptmenü, Fensterleiste und Shopware-6-Logo.
+
+![Desktop der Administration mit Hauptmenü und Fensterleiste](docs/screenshots/desktop.png)
+
+### Produkte
+
+Produktübersicht mit Suche, Statusfilter und Aktionen zur Bearbeitung.
+
+![Produktliste mit Artikelnummern, Status, Bestand und Preisen](docs/screenshots/produkte.png)
+
+### Rule Builder
+
+Übersicht der vorhandenen Regeln mit Priorität und Gültigkeitsstatus.
+
+![Rule Builder mit Regelliste und Prioritäten](docs/screenshots/rule-builder.png)
+
+### Regel bearbeiten
+
+Regelbedingungen lassen sich in verschachtelten UND-/ODER-Gruppen bearbeiten.
+
+![Regeleditor mit Stammdaten und verschachteltem Bedingungsbaum](docs/screenshots/regel-bearbeiten.png)
+
 ## Umgesetzter Umfang
 
 Der Ausbau enthält 73 allgemeine Module bzw. Einstellungsbereiche und zwei zusätzliche
