@@ -152,7 +152,7 @@ export function createOrder(api, config, onCreated) {
         ] });
         let saving = false;
         const editor = Ext.create('Ext.window.Window', { title: 'Warenkorbposition', modal: true, width: Math.min(560, window.innerWidth - 24), layout: 'fit', items: [form],
-            buttons: [{ text: 'Abbrechen', handler: () => editor.close() }, { text: 'Position übernehmen', handler: async () => {
+            buttons: [{ text: 'Abbrechen', handler: () => editor.close() }, { text: 'Position übernehmen', cls: 'emz-admin__primary', handler: async () => {
                 if (saving || !form.getForm().isValid()) return;
                 saving = true; editor.setLoading('Position wird berechnet …');
                 try {

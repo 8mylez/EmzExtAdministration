@@ -1,6 +1,7 @@
 import { modules, moduleView } from './modules/index.js';
 import { encode, showError } from './ui.js';
 import { openNativeAdministration } from './sso.js';
+import { mainMenu, groupEntries, fallbackEntry, fallbackIcon } from './main-menu.js';
 
 export function desktopView(api, config, onLogout) {
     const windows = new Map();
@@ -14,26 +15,38 @@ export function desktopView(api, config, onLogout) {
             { text: 'Shopware-Administration öffnen', handler: () => openNativeAdministration(api, config.nativeUrl).catch(showError) },
             { xtype: 'tbtext', text: 'Demo zum Spaß · Nicht für den Produktiveinsatz', cls: 'emz-admin__system-label' }],
     });
+    const placed = new Set();
+    const menuItem = (module, iconCls) => ({
+        text: module.title, ariaLabel: module.title, iconCls, disabled: !(module.access ? module.access(api) : api.can(`${module.entity}:read`)), handler: () => navigate(module.id),
+    });
+    const menuItems = entries => entries.flatMap(entry => {
+        if (!Array.isArray(entry)) {
+            const items = menuItems(entry.items);
+            return items.length ? [{ text: entry.text, ariaLabel: entry.text, iconCls: entry.iconCls, menu: { cls: 'emz-admin__main-menu', items } }] : [];
+        }
+        const module = modules.find(module => module.id === entry[0]);
+        if (!module) return [];
+        placed.add(module.id);
+        return [menuItem(module, entry[1])];
+    });
+    const menuButtons = mainMenu.map(entry => ({ text: entry.text, ariaLabel: entry.text, iconCls: entry.iconCls, arrowVisible: false, menu: { cls: 'emz-admin__main-menu', items: menuItems(entry.items) } }));
+    for (const module of modules.filter(module => module.group && !placed.has(module.id))) {
+        menuButtons.find(button => button.text === (groupEntries[module.group] || fallbackEntry)).menu.items.push(menuItem(module, fallbackIcon));
+    }
     const navigation = Ext.create('Ext.toolbar.Toolbar', {
         flex: 1, height: 42, cls: 'emz-admin__header', ariaLabel: 'Hauptmenü', enableOverflow: true,
         items: [
             { xtype: 'tbtext', cls: 'emz-admin__brand', text: '8mylez' }, '-',
-            { text: 'Dashboard', itemId: 'dashboard', iconCls: 'emz-admin__icon-dashboard', handler: () => navigate('dashboard') },
-            { text: 'Produkte', itemId: 'products', iconCls: 'emz-admin__icon-products',
-                disabled: !api.can('product:read'), handler: () => navigate('products') },
-            ...[...new Set(modules.map(module => module.group).filter(Boolean))].map(group => ({
-                text: group, ariaLabel: group, menu: modules.filter(module => module.group === group).map(module => ({
-                    text: module.title, ariaLabel: module.title, disabled: !(module.access ? module.access(api) : api.can(`${module.entity}:read`)), handler: () => navigate(module.id),
-                })),
-            })),
+            { text: 'Dashboard', ariaLabel: 'Dashboard', itemId: 'dashboard', iconCls: 'x-fa fa-home', handler: () => navigate('dashboard') },
+            ...menuButtons,
         ],
     });
     const menu = Ext.create('Ext.container.Container', {
         region: 'north', height: 42, layout: { type: 'hbox', align: 'stretch' }, items: [navigation,
-            { xtype: 'toolbar', width: 430, cls: 'emz-admin__header', ariaLabel: 'Benutzer', items: ['->',
+            { xtype: 'toolbar', width: 480, cls: 'emz-admin__header', ariaLabel: 'Benutzer', items: ['->',
                 { text: 'Suche', ariaLabel: 'Globale Suche', iconCls: 'x-fa fa-search', handler: () => navigate('global-search') },
-                { text: 'Nachrichten', ariaLabel: 'Benachrichtigungen', handler: () => navigate('notifications') },
-                { text: encode(api.user.firstName || api.user.username), ariaLabel: 'Mein Profil', handler: () => navigate('profile') },
+                { text: 'Nachrichten', ariaLabel: 'Benachrichtigungen', iconCls: 'x-fa fa-bell', handler: () => navigate('notifications') },
+                { text: encode(api.user.firstName || api.user.username), ariaLabel: 'Mein Profil', iconCls: 'x-fa fa-user', handler: () => navigate('profile') },
                 { text: 'Abmelden', iconCls: 'emz-admin__icon-logout', handler: button => onLogout(button) },
             ] },
         ],

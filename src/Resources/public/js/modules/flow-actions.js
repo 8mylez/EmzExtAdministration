@@ -82,7 +82,7 @@ function chooseCustomField(api, entity) {
         const select = entityField(api, { name: 'customFieldId', label: 'Zusatzfeld', type: 'reference', required: true,
             reference: { entity: 'custom_field', filter: [{ type: 'equals', field: 'customFieldSet.relations.entityName', value: entity }, { type: 'equals', field: 'active', value: true }] } }, null, true);
         const dialog = Ext.create('Ext.window.Window', { title: 'Zusatzfeld auswählen', modal: true, constrain: true, width: Math.min(520, innerWidth - 24), bodyPadding: 20, layout: 'anchor', items: [select],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Weiter', handler: () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Weiter', cls: 'emz-admin__primary', handler: () => {
                 if (!select.isValid()) return; const value = select.getValue(); completed = true; dialog.destroy(); resolve(value);
             } }], listeners: { destroy: () => { if (!completed) resolve(null); } },
         }); dialog.show();

@@ -135,7 +135,7 @@ function sequences(api, config, flow, available) {
         const select = Ext.widget(entityField(api, { name: 'action', label: 'Aktion', type: 'select', required: true,
             options: available.map(action => [action.name, actions[action.name]?.label || action.name]) }, null, true));
         const dialog = Ext.create('Ext.window.Window', { title: 'Aktion auswählen', modal: true, bodyPadding: 20, width: Math.min(550, window.innerWidth - 24),
-            items: [select], buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Weiter', handler: () => {
+            items: [select], buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Weiter', cls: 'emz-admin__primary', handler: () => {
                 if (!select.isValid()) return;
                 const action = select.getValue(); dialog.destroy(); edit(null, action, onSaved, parentDefaults);
             } }],

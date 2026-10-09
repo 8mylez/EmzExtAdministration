@@ -523,7 +523,7 @@ test('Varianten erzeugen und Währungs- und Staffelpreise dauerhaft speichern', 
         expect((await request.post('/api/rule', { headers, data: { id: ruleId, name: number, priority: 1 } })).ok()).toBeTruthy();
         expect((await request.post('/api/product', { headers, data: { id: productId, name: number, productNumber: number, stock: 1, taxId: tax.id,
             price: [{ currencyId, gross: 119, net: 100, linked: false }], configuratorSettings: options.map(optionId => ({ optionId })) } })).ok()).toBeTruthy();
-        await page.getByRole('button', { name: 'Produkte', exact: true }).click();
+        await page.getByRole('button', { name: 'Artikel', exact: true }).click(); await page.getByRole('menuitem', { name: 'Produkte', exact: true }).click();
         await page.getByRole('textbox', { name: 'Produkte suchen' }).fill(number);
         await page.getByRole('dialog', { name: 'Produkte', exact: true }).getByRole('row').filter({ hasText: number }).dblclick();
         const editor = page.getByRole('dialog', { name: 'Produkt bearbeiten', exact: true });
@@ -595,7 +595,7 @@ test('Produktübersetzungen, Zusatzfelder und private Download-Dateien funktioni
                 { id: preservedFieldId, name: preservedField, type: 'text', active: true, config: { label: { 'de-DE': 'Unverändert' } } }] } })).ok()).toBeTruthy();
         expect((await request.post('/api/product', { headers, data: { id: productId, name: number, productNumber: number, stock: 1, taxId: tax.id, type: 'digital',
             price: [{ currencyId, gross: 10, net: 10, linked: false }], customFields: { [preservedField]: 'Behalten' } } })).ok()).toBeTruthy();
-        await page.getByRole('button', { name: 'Produkte', exact: true }).click();
+        await page.getByRole('button', { name: 'Artikel', exact: true }).click(); await page.getByRole('menuitem', { name: 'Produkte', exact: true }).click();
         await page.getByRole('textbox', { name: 'Produkte suchen' }).fill(number);
         await page.getByRole('dialog', { name: 'Produkte', exact: true }).getByRole('row').filter({ hasText: number }).dblclick();
         const editor = page.getByRole('dialog', { name: 'Produkt bearbeiten', exact: true });
@@ -680,7 +680,7 @@ test('Login, Produkt anlegen und ändern, Refresh und Logout im echten Shop', as
         await page.getByRole('toolbar', { name: 'Hauptmenü' }).getByRole('button', { name: 'Dashboard', exact: true }).click();
         await expect(dashboard).toBeVisible();
         await page.screenshot({ path: 'test-results/ext-administration-dashboard.png', fullPage: true });
-        await page.getByRole('button', { name: 'Produkte', exact: true }).click();
+        await page.getByRole('button', { name: 'Artikel', exact: true }).click(); await page.getByRole('menuitem', { name: 'Produkte', exact: true }).click();
         await page.getByRole('button', { name: 'Produkt anlegen', exact: true }).click();
         const dialog = page.getByRole('dialog', { name: 'Produkt anlegen' });
         await expect(dialog).toBeVisible();
@@ -778,7 +778,7 @@ test('Echte Leserolle kann Produkte ansehen und keine Produkte schreiben', async
         expect(user.ok()).toBeTruthy();
         userCreated = true;
         await login(page, credentials);
-        await page.getByRole('button', { name: 'Produkte', exact: true }).click();
+        await page.getByRole('button', { name: 'Artikel', exact: true }).click(); await page.getByRole('menuitem', { name: 'Produkte', exact: true }).click();
         await expect(page.getByRole('button', { name: 'Produkt anlegen', exact: true })).toBeDisabled();
         await page.getByRole('dialog', { name: 'Produkte', exact: true }).getByRole('gridcell').first().dblclick();
         const dialog = page.getByRole('dialog', { name: 'Produkt bearbeiten' });
@@ -1913,7 +1913,7 @@ test('Produktkopie erhält Varianten und Massenbearbeitung ändert nur markierte
                 price: [{ currencyId: currency.id, gross: 59.5, net: 50, linked: true, listPrice: { gross: 71.4, net: 60, linked: true } }] } })).ok()).toBeTruthy(); created.push(id);
         }
         expect((await request.post('/api/product', { headers, data: { id: variantId, parentId: ids[0], productNumber: `${prefix}-variant`, stock: 2 } })).ok()).toBeTruthy();
-        await login(page); await page.getByRole('button', { name: 'Produkte', exact: true }).click(); const list = page.getByRole('dialog', { name: 'Produkte', exact: true });
+        await login(page); await page.getByRole('button', { name: 'Artikel', exact: true }).click(); await page.getByRole('menuitem', { name: 'Produkte', exact: true }).click(); const list = page.getByRole('dialog', { name: 'Produkte', exact: true });
         await list.getByRole('textbox', { name: 'Produkte suchen', exact: true }).fill(prefix); await list.getByRole('gridcell', { name: `${prefix} 0`, exact: true }).click();
         await list.getByRole('button', { name: 'Duplizieren', exact: true }).click(); const clone = page.getByRole('dialog', { name: 'Produkt duplizieren', exact: true });
         await clone.getByRole('textbox', { name: 'Neue Artikelnummer:', exact: true }).fill(`${prefix}-copy`);
@@ -2146,7 +2146,7 @@ test('Varianten können Stammdaten und Preise gezielt erben oder mit gleichem We
         price: [{ currencyId: currency.id, gross: 59.5, net: 50, linked: true, listPrice: { gross: 71.4, net: 60, linked: true } }], children: [{ id: childId, name: `${name} Variante`, productNumber: `${name}.1`, stock: 4, shippingFree: true, price: [{ currencyId: currency.id, gross: 11.9, net: 10, linked: true }] }] } })).ok()).toBeTruthy();
     const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
     try {
-        await login(page); await page.getByRole('button', { name: 'Produkte', exact: true }).click(); const list = page.getByRole('dialog', { name: 'Produkte', exact: true }); await list.getByRole('textbox', { name: 'Produkte suchen', exact: true }).fill(name);
+        await login(page); await page.getByRole('button', { name: 'Artikel', exact: true }).click(); await page.getByRole('menuitem', { name: 'Produkte', exact: true }).click(); const list = page.getByRole('dialog', { name: 'Produkte', exact: true }); await list.getByRole('textbox', { name: 'Produkte suchen', exact: true }).fill(name);
         await list.getByRole('gridcell', { name, exact: true }).first().dblclick(); const parent = page.getByRole('dialog', { name: 'Produkt bearbeiten', exact: true }).first(); await parent.getByRole('tab', { name: 'Varianten', exact: true }).click();
         await parent.getByRole('gridcell', { name: `${name}.1`, exact: true }).dblclick(); const variant = page.getByRole('dialog', { name: 'Produkt bearbeiten', exact: true }).last();
         await variant.getByRole('checkbox', { name: 'Vom Hauptprodukt übernehmen: Produktname', exact: true }).check(); await expect(variant.getByRole('textbox', { name: 'Produktname:', exact: true })).toHaveValue(name);
@@ -2253,7 +2253,7 @@ test('Variantendarstellung und Ausschlüsse werden gespeichert und bei der Gener
                 options: optionIds.slice(index * 2, index * 2 + 2).map((id, option) => ({ id, name: index ? ['M', 'L'][option] : ['Rot', 'Blau'][option] })) } })).ok()).toBeTruthy(); created.push(groupId);
         }
         expect((await request.post('/api/product', { headers, data: { id: productId, name, productNumber: name, stock: 0, active: false, taxId: tax.id, price: [{ currencyId: currency.id, gross: 119, net: 100, linked: true }], configuratorSettings: optionIds.map(optionId => ({ optionId })) } })).ok()).toBeTruthy();
-        await login(page); await page.getByRole('button', { name: 'Produkte', exact: true }).click(); const list = page.getByRole('dialog', { name: 'Produkte', exact: true }); await list.getByRole('textbox', { name: 'Produkte suchen' }).fill(name); await list.getByRole('row').filter({ hasText: name }).dblclick();
+        await login(page); await page.getByRole('button', { name: 'Artikel', exact: true }).click(); await page.getByRole('menuitem', { name: 'Produkte', exact: true }).click(); const list = page.getByRole('dialog', { name: 'Produkte', exact: true }); await list.getByRole('textbox', { name: 'Produkte suchen' }).fill(name); await list.getByRole('row').filter({ hasText: name }).dblclick();
         const editor = page.getByRole('dialog', { name: 'Produkt bearbeiten', exact: true }); await editor.getByRole('tab', { name: 'Variantendarstellung', exact: true }).click();
         const listingMode = editor.getByRole('combobox', { name: 'Darstellung in Produktlisten:', exact: true });
         await listingMode.click();

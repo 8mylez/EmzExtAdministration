@@ -129,7 +129,7 @@ function codesPanel(api, config, promotion) {
         const amount = Ext.create('Ext.form.field.Number', { fieldLabel: 'Anzahl neuer Codes', labelAlign: 'top', value: 100, minValue: 1, maxValue: 10000, allowDecimals: false, allowBlank: false });
         const dialog = Ext.create('Ext.window.Window', { title: 'Individuelle Codes erzeugen', modal: true, width: 540, bodyPadding: 20,
             items: [{ xtype: 'component', html: `<p>Muster: ${encode(current.individualCodePattern)}</p><p>Neue Codes werden ergänzt. Bestehende Codes bleiben gültig.</p>` }, amount],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Codes hinzufügen', handler: async () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Codes hinzufügen', cls: 'emz-admin__primary', handler: async () => {
                 if (saving || !amount.isValid()) return; saving = true; dialog.setLoading('Codes werden erzeugt …');
                 try { await api.request('/_action/promotion/codes/add-individual', 'POST', { promotionId: promotion.id, amount: amount.getValue() });
                     dialog.destroy(); if (!panel.destroyed) panel.refreshRecords(); notify('Individuelle Codes erzeugt.'); }

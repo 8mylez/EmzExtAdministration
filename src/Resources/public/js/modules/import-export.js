@@ -54,7 +54,7 @@ function mappingPanel(api, profile) {
     function fromTemplate() {
         const field = Ext.create('Ext.form.field.File', { fieldLabel: 'CSV-Vorlage', buttonText: 'Datei wählen', allowBlank: false });
         const dialog = Ext.create('Ext.window.Window', { title: 'Feldzuordnung aus CSV', modal: true, width: 560, bodyPadding: 20, items: [field],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zuordnung übernehmen', handler: async () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zuordnung übernehmen', cls: 'emz-admin__primary', handler: async () => {
                 const file = field.fileInputEl.dom.files[0]; if (!file) return;
                 dialog.setLoading('Spalten werden gelesen …');
                 try {

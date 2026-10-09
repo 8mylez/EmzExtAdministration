@@ -84,7 +84,7 @@ export function variantSettingsPanel(api, product) {
             { xtype: 'component', itemId: 'error', cls: 'emz-admin__error' },
         ] });
         const dialog = Ext.create('Ext.window.Window', { title: 'Variantenkombination ausschließen', modal: true, constrain: true, layout: 'fit', width: Math.min(640, innerWidth - 24), height: Math.min(650, innerHeight - 32), items: [editor],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Übernehmen', handler: () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Übernehmen', cls: 'emz-admin__primary', handler: () => {
                 const values = fields.filter(field => field.getValue().length).map(field => ({ ...(originalRestriction?.values?.find(value => value.group === field.getName()) || { id: uuid() }), group: field.getName(), options: field.getValue() }));
                 if (!values.length) { editor.down('#error').update('Bitte mindestens eine Ausprägung auswählen.'); return; }
                 const updated = { ...(originalRestriction || { id: uuid() }), values };

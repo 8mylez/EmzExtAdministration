@@ -45,7 +45,7 @@ export async function openEntityEditor(api, config, definition, id, onSaved) {
     const dialog = Ext.create('Ext.window.Window', {
         title: `${definition.singular} ${id ? 'bearbeiten' : 'anlegen'}`, modal: true, layout: 'fit', constrain: true,
         width: Math.min(definition.editorWidth || (extraTabs.length > 5 ? 1040 : 760), window.innerWidth - 24),
-        height: Math.min(780, window.innerHeight - 32), items: extraTabs.length ? [{ xtype: 'tabpanel', ...(extraTabs.length > 5 ? { tabPosition: 'left', tabRotation: 0, tabBar: { width: 180 } } : {}), items: [form, ...extraTabs] }] : [form],
+        height: Math.min(780, window.innerHeight - 32), items: extraTabs.length ? [{ xtype: 'tabpanel', items: [form, ...extraTabs] }] : [form],
         buttons: [
             { text: 'Abbrechen', handler: () => dialog.close() },
             { text: 'Speichern', ariaLabel: 'Speichern', cls: 'emz-admin__primary', disabled: !canWrite, handler: save },

@@ -67,7 +67,7 @@ function extensionView(api, config) {
             ] : []),
         ] });
         const dialog = Ext.create('Ext.window.Window', { title: `Erweiterung: ${labels[action]}`, width: Math.min(620, innerWidth - 24), maxHeight: innerHeight - 32, modal: true, constrain: true, layout: 'fit', items: [form],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: labels[action], handler: async () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: labels[action], cls: 'emz-admin__primary', handler: async () => {
                 if (!form.getForm().isValid()) return;
                 const values = form.getForm().getFieldValues(); dialog.hide();
                 const success = await run(`/_action/extension/${action}/${encodeURIComponent(row.type)}/${encodeURIComponent(row.name)}`, ['activate', 'deactivate'].includes(action) ? 'PUT' : 'POST',
@@ -89,7 +89,7 @@ function extensionView(api, config) {
     function upload() {
         const field = Ext.create('Ext.form.field.File', { name: 'file', fieldLabel: 'ZIP-Datei', labelAlign: 'top', anchor: '100%', buttonText: 'Auswählen …', allowBlank: false });
         const dialog = Ext.create('Ext.window.Window', { title: 'Erweiterung hochladen', modal: true, constrain: true, width: Math.min(540, innerWidth - 24), bodyPadding: 20, layout: 'anchor', items: [field],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Hochladen', handler: async () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Hochladen', cls: 'emz-admin__primary', handler: async () => {
                 const file = field.fileInputEl.dom.files[0]; if (!file) return;
                 if (!file.name.toLowerCase().endsWith('.zip')) { showError(new Error('Bitte ein ZIP-Archiv auswählen.')); return; }
                 const data = new FormData(); data.append('file', file); dialog.hide();
@@ -107,7 +107,7 @@ function extensionView(api, config) {
             const form = Ext.create('Ext.form.Panel', { bodyPadding: 20, scrollable: true, items: privileges.map((privilege, index) => ({ xtype: 'checkboxfield', name: String(index),
                 boxLabel: encode(`${privilege}${requested.has(privilege) ? ' (angefordert)' : ''}`), checked: accepted.has(privilege) })) });
             const dialog = Ext.create('Ext.window.Window', { title: `App-Berechtigungen: ${row.label || row.name}`, modal: true, constrain: true, width: Math.min(680, innerWidth - 24), height: Math.min(650, innerHeight - 32), layout: 'fit', items: [form], buttons: [
-                { text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Berechtigungen speichern', handler: async () => {
+                { text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Berechtigungen speichern', cls: 'emz-admin__primary', handler: async () => {
                     const values = form.getForm().getFieldValues(); const accept = privileges.filter((privilege, index) => values[String(index)] && !accepted.has(privilege)); const revoke = privileges.filter((privilege, index) => !values[String(index)] && accepted.has(privilege));
                     dialog.hide(); await run(`/app-system/${encodeURIComponent(row.name)}/privileges`, 'PATCH', { accept, revoke }); dialog.destroy();
                 } },

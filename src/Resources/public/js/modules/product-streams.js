@@ -85,7 +85,7 @@ export function streamTabs(api, config, stream) {
         const form = Ext.create('Ext.form.Panel', { bodyPadding: 20, scrollable: true, items: [field, type, valueForm] });
         let valueField; let nullField;
         const dialog = Ext.create('Ext.window.Window', { title: 'Produktfilter bearbeiten', modal: true, width: 600, maxHeight: window.innerHeight - 40, layout: 'fit', items: [form],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Übernehmen', handler: () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Übernehmen', cls: 'emz-admin__primary', handler: () => {
                 if (!form.getForm().isValid()) return;
                 let values;
                 if (group) { const [kind, operator] = type.getValue().split(':'); values = { type: kind, operator }; }

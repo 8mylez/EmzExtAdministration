@@ -39,7 +39,7 @@ function featurePanel(api, record) {
         ] });
         const type = form.getForm().findField('type');
         const dialog = Ext.create('Ext.window.Window', { title: 'Merkmal hinzufügen', width: Math.min(520, innerWidth - 24), modal: true, constrain: true, layout: 'fit', items: [form], buttons: [
-            { text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Hinzufügen', handler: () => {
+            { text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Hinzufügen', cls: 'emz-admin__primary', handler: () => {
                 if (!form.getForm().isValid()) return;
                 const kind = type.getValue(); const field = form.getForm().findField('value'); const value = field?.getValue();
                 const row = kind === 'referencePrice' ? { id: uuid(), name: 'referencePrice', type: kind }

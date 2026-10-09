@@ -63,7 +63,7 @@ function userRoles(api, config, user) {
         const select = entityField(api, { name: 'role', label: 'Rolle', type: 'reference', required: true, reference: { entity: 'acl_role' } }, null, true);
         let saving = false;
         const dialog = Ext.create('Ext.window.Window', { title: 'Rolle zuordnen', modal: true, bodyPadding: 20, width: Math.min(540, window.innerWidth - 24),
-            items: [select], buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zuordnen', handler: async () => {
+            items: [select], buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zuordnen', cls: 'emz-admin__primary', handler: async () => {
                 if (saving || !select.isValid()) return;
                 saving = true;
                 try {

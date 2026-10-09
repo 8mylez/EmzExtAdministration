@@ -125,7 +125,7 @@ async function openRuleEditor(api, config, definition, id, onSaved) {
         let fields = [];
         const editor = Ext.create('Ext.window.Window', { title: 'Bedingung bearbeiten', modal: true, constrain: true, scrollable: true,
             width: Math.min(590, window.innerWidth - 24), maxHeight: window.innerHeight - 48, bodyPadding: 20,
-            items: [typeField, valuesForm], buttons: [{ text: 'Abbrechen', handler: () => editor.close() }, { text: 'Übernehmen', handler: () => {
+            items: [typeField, valuesForm], buttons: [{ text: 'Abbrechen', handler: () => editor.close() }, { text: 'Übernehmen', cls: 'emz-admin__primary', handler: () => {
                 if (!typeField.isValid() || !valuesForm.getForm().isValid()) return;
                 try {
                     const { values } = formValues(valuesForm, fields);

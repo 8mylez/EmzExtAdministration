@@ -65,7 +65,7 @@ export function moveMediaDialog(api, grid) {
     const folder = entityField(api, { name: 'folder', label: 'Zielordner (leer = Hauptverzeichnis)', type: 'reference', reference: { entity: 'media_folder' } }, null, true);
     const dialog = Ext.create('Ext.window.Window', { title: 'Medien verschieben', width: Math.min(560, innerWidth - 24), modal: true, constrain: true, bodyPadding: 20, layout: 'anchor', items: [
         { xtype: 'component', html: `<p>${ids.length} ausgewählte Dateien verschieben.</p>` }, folder,
-    ], buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Verschieben', handler: async () => {
+    ], buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Verschieben', cls: 'emz-admin__primary', handler: async () => {
         if (saving) return; saving = true; dialog.setLoading('Dateien werden verschoben …');
         try {
             const records = (await api.search('media', { ids, limit: ids.length })).data;

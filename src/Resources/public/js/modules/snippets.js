@@ -50,7 +50,7 @@ export function snippetsView(api, config, fixedSet) {
             { xtype: 'component', itemId: 'error', cls: 'emz-admin__error', ariaRole: 'alert' },
         ] });
         const dialog = Ext.create('Ext.window.Window', { title: `Textbaustein ${record ? 'bearbeiten' : 'anlegen'}`, modal: true, width: 720, maxHeight: window.innerHeight - 32, scrollable: true, items: [form],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Speichern', disabled: !writable, handler: async () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Speichern', cls: 'emz-admin__primary', disabled: !writable, handler: async () => {
                 if (saving || !form.getForm().isValid()) return; saving = true; dialog.setLoading('Text wird gespeichert …');
                 try {
                     const values = form.getForm().getValues();

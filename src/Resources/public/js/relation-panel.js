@@ -39,7 +39,7 @@ export function relationPanel(api, config, owner, relation) {
         const field = entityField(api, { name: 'id', label: title, required: true, type: 'reference', reference: { entity, labelFields, search: relation.search, filter: relation.filter } }, null, true);
         let saving = false;
         const dialog = Ext.create('Ext.window.Window', { title: `${title} zuordnen`, modal: true, width: Math.min(570, window.innerWidth - 24), bodyPadding: 20, layout: 'anchor', items: [field],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zuordnen', handler: async () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zuordnen', cls: 'emz-admin__primary', handler: async () => {
                 if (saving || !field.isValid()) return;
                 saving = true; dialog.setLoading('Zuordnung wird gespeichert …');
                 try { await api.request(ownerPath, 'PATCH', { [association]: [{ id: field.getValue() }] }); dialog.destroy(); if (!panel.destroyed) panel.refreshRecords(); }

@@ -174,6 +174,41 @@
     color: var(--emz-blue);
 }
 
+/* Window controls use the original Shopware 5 sprite: 15px tiles, hover state in the second column. */
+.emz-admin .x-window-header-default .x-tool-tool-el {
+    width: 0.9375rem;
+    height: 0.9375rem;
+    background-color: transparent;
+    opacity: 1;
+}
+
+.emz-admin .x-window-header-default .x-tool-close::before,
+.emz-admin .x-window-header-default .x-tool-minimize::before,
+.emz-admin .x-window-header-default .x-tool-maximize::before,
+.emz-admin .x-window-header-default .x-tool-restore::before {
+    content: '';
+    display: block;
+    width: 0.9375rem;
+    height: 0.9375rem;
+    background: url('../images/shopware5/tool-sprites.png') 0 0 / 1.875rem 22.5rem no-repeat;
+}
+
+.emz-admin .x-window-header-default .x-tool-minimize::before {
+    background-position-y: -0.9375rem;
+}
+
+.emz-admin .x-window-header-default .x-tool-maximize::before {
+    background-position-y: -1.875rem;
+}
+
+.emz-admin .x-window-header-default .x-tool-restore::before {
+    background-position-y: -2.8125rem;
+}
+
+.emz-admin .x-window-header-default .x-tool-over .x-tool-tool-el::before {
+    background-position-x: -0.9375rem;
+}
+
 .emz-admin .x-window-body-default {
     border-color: #eff2f5;
     background: #f9fafa;
@@ -193,50 +228,39 @@
     background: var(--emz-surface);
 }
 
-.emz-admin .x-btn-default-small,
-.emz-admin .x-btn-default-medium,
-.emz-admin .x-btn-default-toolbar-small {
+/* Selectors carry three classes so Triton's focus and disabled rules cannot flatten the gradients. */
+.emz-admin .x-btn.x-btn-default-small,
+.emz-admin .x-btn.x-btn-default-medium,
+.emz-admin .x-btn.x-btn-default-toolbar-small {
     padding: 0.3125rem 0.625rem;
-    border: 0.0625rem solid var(--emz-border);
-    border-radius: 0.1875rem;
-    background: linear-gradient(#fff, #e4e9ed);
-    box-shadow: inset 0 0.0625rem #fff, 0 0.0625rem 0.0625rem #475c6a1a;
+    border: 0;
+    border-radius: 0.25rem;
+    background: linear-gradient(#fafafb, #cad6e3);
+    box-shadow: none;
 }
 
 .emz-admin .x-btn-inner-default-small,
 .emz-admin .x-btn-inner-default-medium,
 .emz-admin .x-btn-inner-default-toolbar-small {
     color: var(--emz-text);
+    font-size: 0.6875rem;
     font-weight: normal;
     line-height: 1.125rem;
-    text-shadow: 0 0.0625rem #fff;
 }
 
-.emz-admin .x-btn-over {
-    border-color: #719bb8;
-    background: linear-gradient(#fff, #dcecf6);
+.emz-admin .x-btn.x-btn-over {
+    background: linear-gradient(#fdfefe, #b7cee7);
 }
 
-.emz-admin .x-btn-pressed {
-    background: #d7e5ef;
-    box-shadow: inset 0 0.0625rem 0.1875rem #475c6a33;
+.emz-admin .x-btn.x-btn-pressed,
+.emz-admin .x-btn.x-btn-menu-active {
+    background: linear-gradient(#b7cee7, #e3ecf5);
 }
 
-.emz-admin .emz-admin__primary {
-    border-color: #155584;
-    background: linear-gradient(#2f79b1, #0e5c99);
-    box-shadow: inset 0 0.0625rem #71a9cc;
-}
-
-.emz-admin .emz-admin__primary.x-btn-over {
-    background: linear-gradient(#276eaa, #094d85);
-}
-
-.emz-admin .emz-admin__primary .x-btn-inner,
-.emz-admin .emz-admin__primary .x-btn-icon-el {
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 0.0625rem #084975;
+.emz-admin .x-btn-icon-el,
+.emz-admin .x-btn-wrap.x-btn-arrow::after {
+    color: #526979;
+    font-size: 0.875rem;
 }
 
 .emz-admin .x-btn-focus,
@@ -249,9 +273,46 @@
     opacity: 0.5;
 }
 
-.emz-admin .x-btn-icon-el {
-    color: #526979;
-    font-size: 0.875rem;
+/* Dialog footers use the Shopware 5 button set: secondary by default, primary for the main action. */
+.emz-admin .x-toolbar-footer .x-btn {
+    padding: 0.3125rem 1.5625rem;
+    background: linear-gradient(#b2c1cb, #7f98a9);
+}
+
+.emz-admin .x-toolbar-footer .x-btn.x-btn-over,
+.emz-admin .x-toolbar-footer .x-btn.x-btn-pressed {
+    background: linear-gradient(#c6d1d9, #93a8b7);
+}
+
+.emz-admin .x-toolbar-footer .x-btn-inner,
+.emz-admin .x-toolbar-footer .x-btn-icon-el {
+    color: #fff;
+    font-size: 0.75rem;
+    text-shadow: 0 0.0625rem 0.0625rem #475c6a;
+}
+
+.emz-admin .x-toolbar-footer .x-btn-disabled {
+    opacity: 0.65;
+}
+
+.emz-admin .x-btn.emz-admin__primary {
+    background: linear-gradient(#2eb5f9, #1681d3);
+}
+
+.emz-admin .x-btn.emz-admin__primary.x-btn-over,
+.emz-admin .x-btn.emz-admin__primary.x-btn-pressed {
+    background: linear-gradient(#1bc9fa, #1199e2);
+}
+
+.emz-admin .x-btn.emz-admin__primary .x-btn-inner,
+.emz-admin .x-btn.emz-admin__primary .x-btn-icon-el {
+    color: #fff;
+    font-size: 0.75rem;
+    text-shadow: 0 0.0625rem 0.0625rem #0b489d;
+}
+
+.emz-admin .x-btn.emz-admin__primary.x-btn-disabled {
+    opacity: 0.65;
 }
 
 .emz-admin .x-form-trigger-wrap-default {
@@ -331,11 +392,9 @@
 }
 
 .emz-admin__header.x-toolbar {
-    padding: 0 0.75rem;
-    border-bottom: 0.0625rem solid #164f7b;
-    background: #5084aa url('../images/shopware5/nav_taskbar_top_bg.png') repeat-x;
-    background-size: auto 100%;
-    background-blend-mode: multiply;
+    padding: 0 0.375rem;
+    border-bottom: 0.0625rem solid #0b6dbe;
+    background: linear-gradient(#2eb5f9, #1681d3);
 }
 
 .emz-admin__taskbar.x-toolbar {
@@ -345,44 +404,101 @@
     background-size: auto 100%;
 }
 
-.emz-admin__header .x-btn,
-.emz-admin__taskbar .x-btn {
-    border-color: transparent;
-    background: transparent;
-    box-shadow: none;
+.emz-admin .emz-admin__header .x-btn {
+    border-radius: 0;
+    background: none;
 }
 
 .emz-admin__header .x-btn-inner,
 .emz-admin__header .x-toolbar-text {
     color: #fff;
-    text-shadow: 0 0.0625rem #163e5c;
-}
-
-.emz-admin__taskbar .x-btn-inner,
-.emz-admin__taskbar .x-toolbar-text {
-    color: var(--emz-text);
-    text-shadow: 0 0.0625rem #fff;
+    text-shadow: 0.0625rem 0.0625rem #145c9a;
 }
 
 .emz-admin__header .x-btn-inner {
     font-size: 0.875rem;
 }
 
-.emz-admin__header .x-btn-over {
-    border-color: #ffffff40;
-    background: #ffffff1f;
-    box-shadow: inset 0 0.0625rem #ffffff1f;
+.emz-admin__header .x-btn-icon-el,
+.emz-admin__header .x-btn-wrap.x-btn-arrow::after {
+    color: #fff;
 }
 
-.emz-admin__taskbar .x-btn-over,
-.emz-admin__taskbar .x-btn-pressed {
-    border-color: #8aa6b9;
-    background: #d9e7f0;
-    box-shadow: inset 0 0.0625rem #fff;
+.emz-admin .emz-admin__header .x-btn.x-btn-over {
+    background: #ffffff26;
+}
+
+/* An opened main menu entry turns white and merges with its drop-down. */
+.emz-admin .emz-admin__header .x-btn.x-btn-menu-active {
+    background: #fff;
+}
+
+.emz-admin__header .x-btn-menu-active .x-btn-inner,
+.emz-admin__header .x-btn-menu-active .x-btn-wrap.x-btn-arrow::after {
+    color: #0e6bbb;
+    text-shadow: none;
 }
 
 .emz-admin__header .x-btn-focus {
     outline-color: #fff;
+    outline-offset: -0.125rem;
+}
+
+.emz-admin__header .x-toolbar-separator-horizontal {
+    height: 1.125rem;
+    border-right: 0.0625rem solid #fff3;
+    border-left-color: #186db899;
+}
+
+.emz-admin .emz-admin__taskbar .x-btn {
+    padding: 0.25rem 0.625rem;
+    background: linear-gradient(#7f98a9, #b2c1cb);
+}
+
+.emz-admin .emz-admin__taskbar .x-btn.x-btn-over {
+    background: linear-gradient(#93a8b7, #c6d1d9);
+}
+
+.emz-admin .emz-admin__taskbar .x-btn.x-btn-pressed {
+    background: linear-gradient(#2eb5f9, #1681d3);
+}
+
+.emz-admin .emz-admin__taskbar .x-btn.x-btn-pressed.x-btn-over {
+    background: linear-gradient(#1bc9fa, #1199e2);
+}
+
+.emz-admin__taskbar .x-btn-inner,
+.emz-admin__taskbar .x-btn-icon-el {
+    color: #fff;
+    font-size: 0.75rem;
+    text-shadow: 0 0.0625rem 0.0625rem #555;
+}
+
+.emz-admin__taskbar .x-toolbar-text {
+    color: var(--emz-text);
+    text-shadow: 0 0.0625rem #fff;
+}
+
+.emz-admin .emz-admin__main-menu.x-menu {
+    border: 0;
+    box-shadow: 0 0.0625rem 0.0625rem #00376eb3;
+}
+
+/* Shopware 5 sprite icons are 16px tiles. */
+.emz-admin .emz-admin__main-menu .x-menu-item-icon {
+    top: 0.4375rem;
+    left: 0.625rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.emz-admin .emz-admin__main-menu .x-menu-item-text {
+    color: #0e6bbb;
+}
+
+.emz-admin .emz-admin__main-menu .x-menu-item-active .x-menu-item-text,
+.emz-admin .emz-admin__main-menu .x-menu-item-focus .x-menu-item-text {
+    color: #035a9b;
 }
 
 .emz-admin__brand.x-toolbar-text {
@@ -407,6 +523,42 @@
 
 .emz-admin__icon-products {
     background: url('../images/shopware5/icon_taskbar_top_artikel.png') center no-repeat;
+}
+
+.emz-admin__icon-content {
+    background: url('../images/shopware5/icon_taskbar_top_inhalte.png') center no-repeat;
+}
+
+.emz-admin__icon-customers {
+    background: url('../images/shopware5/icon_taskbar_top_kunden.png') center no-repeat;
+}
+
+.emz-admin__icon-settings {
+    background: url('../images/shopware5/icon_taskbar_top_einstellungen.png') center no-repeat;
+}
+
+.emz-admin__icon-marketing {
+    background: url('../images/shopware5/icon_taskbar_top_marketing.png') center no-repeat;
+}
+
+.x-btn-menu-active .emz-admin__icon-products {
+    background-image: url('../images/shopware5/icon_taskbar_top_artikel_active.png');
+}
+
+.x-btn-menu-active .emz-admin__icon-content {
+    background-image: url('../images/shopware5/icon_taskbar_top_inhalte_active.png');
+}
+
+.x-btn-menu-active .emz-admin__icon-customers {
+    background-image: url('../images/shopware5/icon_taskbar_top_kunden_active.png');
+}
+
+.x-btn-menu-active .emz-admin__icon-settings {
+    background-image: url('../images/shopware5/icon_taskbar_top_einstellungen_active.png');
+}
+
+.x-btn-menu-active .emz-admin__icon-marketing {
+    background-image: url('../images/shopware5/icon_taskbar_top_marketing_active.png');
 }
 
 .emz-admin__icon-logout {
@@ -448,11 +600,157 @@
     object-fit: contain;
 }
 
-.emz-admin .x-fieldset-header-text,
+.emz-admin .x-tab-bar-default {
+    background: linear-gradient(#f7f7f7, #e5e6e9);
+}
+
+.emz-admin .x-tab-bar-default-top > .x-tab-bar-body-default {
+    min-height: 0;
+    padding: 0.5625rem 0.3125rem 0.1875rem;
+}
+
+.emz-admin .x-tab-bar-default-top > .x-tab-bar-strip-default {
+    height: 0.1875rem;
+    background: #1681d3;
+}
+
+.emz-admin .x-tab.x-tab-default {
+    background: linear-gradient(#b2c1cb, #7f98a9);
+}
+
+.emz-admin .x-tab.x-tab-default-top {
+    margin: 0 0.3125rem;
+    padding: 0.125rem 0.75rem;
+    border-radius: 0.3125rem 0.3125rem 0 0;
+}
+
+.emz-admin .x-tab-inner-default {
+    color: #fff;
+    font: 0.75rem/1.125rem Arial, Verdana, sans-serif;
+    text-shadow: 0 0.0625rem #8190a3;
+}
+
+.emz-admin .x-tab.x-tab-over.x-tab-default {
+    background: linear-gradient(#c6d1d9, #93a8b7);
+}
+
+.emz-admin .x-tab.x-tab-active.x-tab-default {
+    background: linear-gradient(#2eb5f9, #1681d3);
+}
+
+.emz-admin .x-tab.x-tab-active.x-tab-default .x-tab-inner-default {
+    color: #fff;
+    text-shadow: 0 0.0625rem #0b489d;
+}
+
+.emz-admin .x-tab.x-tab-disabled.x-tab-default {
+    background: linear-gradient(#e6e6e9, #dddee0);
+}
+
+.emz-admin .x-tab.x-tab-disabled.x-tab-default .x-tab-inner-default {
+    color: #8596a2;
+    text-shadow: 0 0.0625rem #fff;
+}
+
+.emz-admin.x-keyboard-mode .x-tab.x-tab-focus.x-tab-default {
+    outline: 0.125rem solid #fff;
+    outline-offset: -0.1875rem;
+}
+
+.emz-admin .x-box-scroller-tab-bar-default {
+    color: var(--emz-text);
+    background: none;
+}
+
+.emz-admin .x-menu-default {
+    border-color: var(--emz-border);
+}
+
 .emz-admin .x-menu-item-text {
     color: var(--emz-text);
-    font-family: Arial, Verdana, sans-serif;
-    font-size: 0.75rem;
+    font: 0.75rem/1.8125rem Arial, Verdana, sans-serif;
+}
+
+.emz-admin .x-menu-item-default.x-menu-item-active,
+.emz-admin .x-menu-item-default.x-menu-item-focus {
+    background: #bcd5e34d;
+}
+
+.emz-admin .x-menu-item-active .x-menu-item-text,
+.emz-admin .x-menu-item-focus .x-menu-item-text {
+    color: #2f3d46;
+}
+
+.emz-admin .x-fieldset-default {
+    padding: 0.75rem 1.25rem;
+    border-color: #ced4d8;
+}
+
+.emz-admin .x-fieldset-header-default {
+    padding: 0 0.3125rem 0.0625rem;
+}
+
+.emz-admin .x-fieldset-header-default > .x-fieldset-header-text {
+    color: #61677f;
+    font: 0.75rem/1.25rem Arial, Verdana, sans-serif;
+}
+
+.emz-admin .x-form-checkbox-default {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 0.125rem solid #dfe3e6;
+    border-radius: 0.1875rem;
+    color: #1681d3;
+    background: #fff;
+    font: 900 0.75rem/1rem 'Font Awesome 5 Free';
+    text-align: center;
+}
+
+.emz-admin .x-form-checkbox-default::before {
+    content: '';
+}
+
+.emz-admin .x-form-cb-checked .x-form-checkbox-default {
+    border-color: #afd9f7;
+    font: 900 0.75rem/1rem 'Font Awesome 5 Free';
+}
+
+.emz-admin .x-form-cb-checked .x-form-checkbox-default::before {
+    content: '\f00c';
+}
+
+.emz-admin .x-form-checkbox-focus.x-form-checkbox-default {
+    border-color: #1680bd;
+}
+
+.emz-admin .x-boundlist {
+    border-color: var(--emz-border);
+}
+
+.emz-admin .x-boundlist-item {
+    padding: 0.25rem 0.375rem;
+    color: var(--emz-text);
+    font-size: 0.6875rem;
+    line-height: 1.125rem;
+}
+
+.emz-admin .x-boundlist-item-over,
+.emz-admin .x-boundlist-selected {
+    border-color: #fff;
+    color: var(--emz-text);
+    background: #ddedf7;
+}
+
+.emz-admin .x-tip-default {
+    border: 0;
+    background: #000000d9;
+}
+
+.emz-admin .x-tip-body-default {
+    padding: 0.25rem;
+    color: #fff;
+    font: 0.6875rem/1rem Arial, Verdana, sans-serif;
+    text-shadow: 0 0.0625rem #000;
 }
 
 .emz-admin__cms-preview { border: 0; width: 100%; height: 100%; background: #eef2f5; }

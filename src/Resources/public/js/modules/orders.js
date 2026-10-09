@@ -68,7 +68,7 @@ async function openOrder(api, config, definition, id, onSaved) {
             if (info.getForm().isDirty()) { showError(new Error('Bitte den Kommentar zuerst speichern.')); return; }
             editOrder(api, config, id, () => { dialog.destroy(); onSaved(); openOrder(api, config, definition, id, onSaved); });
         } }],
-        buttons: [{ text: 'Schließen', handler: () => dialog.close() }, { text: 'Kommentar speichern', disabled: !canWrite,
+        buttons: [{ text: 'Schließen', handler: () => dialog.close() }, { text: 'Kommentar speichern', cls: 'emz-admin__primary', disabled: !canWrite,
             cls: 'emz-admin__primary', handler: async () => {
                 if (saving) return;
                 const field = info.getForm().findField('internalComment');
@@ -168,7 +168,7 @@ function sendDocument(api, order, documentId, onSent) {
         { xtype: 'component', itemId: 'error', cls: 'emz-admin__error', ariaRole: 'alert' },
     ] });
     const dialog = Ext.create('Ext.window.Window', { title: 'Beleg per E-Mail senden', modal: true, layout: 'fit', width: Math.min(640, innerWidth - 24), items: [form],
-        buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'E-Mail jetzt senden', handler: async () => {
+        buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'E-Mail jetzt senden', cls: 'emz-admin__primary', handler: async () => {
             if (sending || !form.getForm().isValid()) return;
             sending = true; dialog.setLoading('E-Mail wird gesendet …');
             try {

@@ -51,7 +51,7 @@ async function rotateKeys(api, record) {
         { xtype: 'component', itemId: 'error', ariaRole: 'alert', cls: 'emz-admin__error' },
     ] });
     const dialog = Ext.create('Ext.window.Window', { title: 'Integrationszugang erneuern', modal: true, width: Math.min(700, window.innerWidth - 24), layout: 'fit', items: [form],
-        buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zugang ersetzen', handler: async () => {
+        buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zugang ersetzen', cls: 'emz-admin__primary', handler: async () => {
             if (saving || !form.getForm().findField('confirm').getValue()) return;
             saving = true; dialog.setLoading('Zugang wird erneuert …');
             try { await api.request(`/integration/${record.id}`, 'PATCH', keys); dialog.destroy(); notify('Integrationszugang erneuert.'); }

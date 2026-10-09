@@ -118,7 +118,7 @@ export function categoriesView(api, config, definition) {
         const record = selected(); if (!record || busy) return;
         const target = entityField(api, { name: 'parent', label: 'Zielkategorie (leer = Hauptebene)', type: 'reference', reference: { entity: 'category' } }, record.parentId, true);
         const dialog = Ext.create('Ext.window.Window', { title: 'Kategorie verschieben', modal: true, constrain: true, width: Math.min(540, innerWidth - 24), bodyPadding: 20, layout: 'anchor', items: [target],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Verschieben', handler: async () => { const id = target.getValue() || null; dialog.destroy(); await move(record, id, null, false); } }],
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Verschieben', cls: 'emz-admin__primary', handler: async () => { const id = target.getValue() || null; dialog.destroy(); await move(record, id, null, false); } }],
         }); dialog.show();
     }
     function remove() {

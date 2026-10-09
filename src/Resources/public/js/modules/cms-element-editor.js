@@ -158,7 +158,7 @@ function collectionField(api, type, initial, writable) {
             : [{ name: 'priority', label: 'Priorität', type: 'integer', min: 0, default: 1, required: true }];
         const form = Ext.create('Ext.form.Panel', { bodyPadding: 20, items: [field, ...fields.map(desc => entityField(api, desc, row?.get(desc.name), true)), { xtype: 'component', itemId: 'error', cls: 'emz-admin__error' }] });
         const dialog = Ext.create('Ext.window.Window', { title: gallery ? 'Galeriebild bearbeiten' : 'Sortierung bearbeiten', modal: true, constrain: true, width: Math.min(540, innerWidth - 24), items: [form],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Übernehmen', handler: () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Übernehmen', cls: 'emz-admin__primary', handler: () => {
                 if (!form.getForm().isValid()) return;
                 const values = form.getForm().getFieldValues();
                 try {

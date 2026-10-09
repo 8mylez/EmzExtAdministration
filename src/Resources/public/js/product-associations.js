@@ -163,7 +163,7 @@ export function productAssociationPanel(api, product, relation) {
         if (!canAdd || busy) return;
         const field = entityField(api, { name: 'ids', label: title, multiple: true, required: true, type: 'reference', reference: { entity } }, [], true); let saving = false;
         const dialog = Ext.create('Ext.window.Window', { title: `${title} zuordnen`, modal: true, constrain: true, width: Math.min(620, innerWidth - 24), bodyPadding: 20, layout: 'anchor', items: [field],
-            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zuordnen', handler: async () => {
+            buttons: [{ text: 'Abbrechen', handler: () => dialog.close() }, { text: 'Zuordnen', cls: 'emz-admin__primary', handler: async () => {
                 if (saving || !field.isValid()) return; saving = true; dialog.setLoading('Zuordnungen werden gespeichert …');
                 try {
                     const parentValues = product.parentId && !(await ownExists()) ? await associationRecords(api, relation, product.parentId) : [];

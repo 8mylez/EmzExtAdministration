@@ -68,7 +68,7 @@ export async function editOrder(api, config, orderId, onSaved) {
                 const field = entityField(versionApi, { name: 'address', label: 'Kundenadresse', type: 'reference', required: true, reference: { entity: 'customer_address', labelFields: ['street', 'zipcode', 'city'], filter: [{ type: 'equals', field: 'customerId', value: customer.customerId }] } }, null, true);
                 let copying = false;
                 const picker = Ext.create('Ext.window.Window', { title: 'Kundenadresse übernehmen', modal: true, width: Math.min(570, innerWidth - 24), bodyPadding: 20, layout: 'anchor', items: [field],
-                    buttons: [{ text: 'Abbrechen', handler: () => picker.close() }, { text: 'Übernehmen', handler: async () => {
+                    buttons: [{ text: 'Abbrechen', handler: () => picker.close() }, { text: 'Übernehmen', cls: 'emz-admin__primary', handler: async () => {
                         if (copying || !field.isValid()) return; copying = true; picker.setLoading('Adresse wird übernommen …');
                         try { await versionApi.request(`/_action/order-address/${addressId}/customer-address/${field.getValue()}`, 'POST', {}); picker.destroy(); addresses.refreshRecords(); }
                         catch (error) { if (api.user) showError(error); } finally { copying = false; if (!picker.destroyed) picker.setLoading(false); }
@@ -215,7 +215,7 @@ export async function editOrder(api, config, orderId, onSaved) {
         ] });
         let saving = false;
         const editor = Ext.create('Ext.window.Window', { title: 'Bestellposition hinzufügen', modal: true, width: Math.min(570, window.innerWidth - 24), layout: 'fit', items: [form],
-            buttons: [{ text: 'Abbrechen', handler: () => editor.close() }, { text: 'Position hinzufügen', handler: async () => {
+            buttons: [{ text: 'Abbrechen', handler: () => editor.close() }, { text: 'Position hinzufügen', cls: 'emz-admin__primary', handler: async () => {
                 if (saving || !form.getForm().isValid()) return;
                 saving = true; editor.setLoading('Position wird hinzugefügt …');
                 try {

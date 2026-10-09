@@ -78,7 +78,7 @@ export async function openProductEditor(api, config, id, onSaved) {
     const dialog = Ext.create('Ext.window.Window', {
         title: id ? 'Produkt bearbeiten' : 'Produkt anlegen', modal: true, layout: 'fit',
         width: Math.min(1040, window.innerWidth - 24), height: Math.min(840, window.innerHeight - 32),
-        constrain: true, resizable: true, items: [{ xtype: 'tabpanel', tabPosition: 'left', tabRotation: 0, tabBar: { width: 175 }, items: [form,
+        constrain: true, resizable: true, items: [{ xtype: 'tabpanel', items: [form,
             ...relationTabs, ...contentTabs] }],
         buttons: [
             { text: 'Abbrechen', handler: () => dialog.close() },
